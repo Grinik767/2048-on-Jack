@@ -1,0 +1,21 @@
+class Random {
+    field int seed;
+
+    constructor Random new(int nSeed) {
+        let seed = nSeed;
+        return this;
+    }
+    
+    method int nextRandom(int min, int max) {
+        var int randomRange;
+        var int randomNumber;
+        let seed = MathAddon.getRemainder((seed * 7 + 13), 4265);
+        let randomRange = max - min + 1;
+        let randomNumber = MathAddon.getRemainder(seed / 10, randomRange);
+        return randomNumber + min;
+    }
+
+    method int nextStringRandom(String  str) {
+         return nextRandom(0, str.Length());
+    }
+}
