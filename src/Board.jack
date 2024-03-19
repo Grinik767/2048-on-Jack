@@ -1,6 +1,10 @@
 class Board {
     field Array board;
 
+    method Array getValues () {
+        return board;
+    }
+
     constructor Board new(){
         // иницилизируем игровое поле
         var int i, j, x;
