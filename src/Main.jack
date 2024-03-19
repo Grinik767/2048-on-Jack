@@ -1,0 +1,8 @@
+class Main {
+     function void main () {
+         var Tile tile;
+         let tile = Tile.new(5);
+         do Output.printInt(tile.getValue());
+         return;
+     }
+}

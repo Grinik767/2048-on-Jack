@@ -1,0 +1,17 @@
+class Tile {
+    field int value;
+
+    method int getValue () {
+        return value;
+    }
+
+    constructor Tile new(int nValue) {
+        let value = nValue;
+        return this;
+    }
+
+    method void dispose () {
+        do Memory.deAlloc(this);
+        return;
+    }
+}
