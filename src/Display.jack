@@ -21,4 +21,18 @@ class Display {
         }
         return;
     }
+
+    function void printArray (Array array) {
+        var int i;
+        var Tile element;
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        while (i < 4) { 
+            let element = array[i];
+            do Output.printInt(element.getValue());
+            do Output.printString(" ");
+            let i = i + 1;
+        }
+        return;
+    }
 }
