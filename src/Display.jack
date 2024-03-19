@@ -1,0 +1,24 @@
+class Display {
+    function void updateScreen(Board board) {
+        var int i, j;
+        var Tile element;
+        var Array xi, display;
+        let display = board.getValues();
+        let i = 0;
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        while (i < 4) {
+            do Output.println();
+            let j = 0;
+            let xi = display[i];
+            while (j < 4) { 
+                let element = xi[j];
+                do Output.printInt(element.getValue());
+                do Output.printString(" ");
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        return;
+    }
+}
