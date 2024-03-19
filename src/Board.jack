@@ -67,6 +67,27 @@ class Board {
         return result;
     }
 
+    method Array CalculateLine(Array line){
+        var int i, xC, xN;
+        var Tile tC, tN;
+        let i = 0;
+        while (i < 3){
+            let tC = line[i];
+            let xC = tC.getValue();
+            if (~(xC = 0)){
+                let tN = line[i + 1];
+                let xN = tN.getValue();
+                if (xC = xN){
+                    let line[i + 1] = tN.Add(tC);
+                    let line[i] = Tile.new(0);
+                    let i = i + 1;
+                }
+            }
+            let i = i + 1;
+        }
+        return line;
+    }
+
     method void dispose () {
         do Memory.deAlloc(this);
         return;
