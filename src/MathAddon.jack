@@ -1,0 +1,7 @@
+class MathAddon{
+    function int getRemainder (int a, int b) {
+        var int x;
+        let x = (a / b) * b;
+        return a - x;
+    }
+}
