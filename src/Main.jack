@@ -1,8 +1,13 @@
 class Main {
      function void main () {
-         var Tile tile;
-         let tile = Tile.new(5);
-         do Output.printInt(tile.getValue());
-         return;
+         var Array a, result, result1;
+         var Random rnd;
+         let rnd = Random.new(13);
+         let result = rnd.getTwoRandomNumbers(0, 15);
+         let result1 = rnd.getTwoRandomNumbers(0, 15);
+         do Output.printInt(result1[0]);
+         do Output.println();
+         do Output.printInt(result1[1]);
+         return; 
      }
 }

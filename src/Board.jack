@@ -1,0 +1,66 @@
+class Board {
+    field Array board;
+
+    constructor Board new(){
+        // иницилизируем игровое поле
+        var int i, j, x;
+        var Array xi, rndNumbers;
+        var Random rnd;
+        let rnd = Random.new(13);
+        let rndNumbers = rnd.getTwoRandomNumbers(0, 15);
+        let board = Array.new(4);
+        let i = 0;
+        while (i < 4){
+            let board[i] = Array.new(4);
+            let j = 0;
+            while (j < 4){
+                let xi = board[i];
+                let x = i * 4 + MathAddon.getRemainder(j, 4);
+                if (x = rndNumbers[0] | x = rndNumbers[1]){
+                    let xi[j] = Tile.new(2);
+                } else {
+                    let xi[j] = Tile.new(0);
+                }
+                let j = j + 1; 
+            }
+            let i = i + 1;
+        }
+        return this;
+    }
+
+    method Array getFreePlaces () {
+        /*
+        индексация свободных мест
+        0 1 2 3
+        4 5 6 7...
+        */
+        var Array list, result, xi;
+        var int i, j, k;
+        var Tile xj;
+        let list = Array.new(16);
+        let i = 0;
+        let k = 0;
+        while (i < 4){
+            let j = 0;
+            while (j < 4){
+                let xi = board[i];
+                let xj = xi[j];
+                if (xj.getValue() = 0){
+                    let list[k] = i * 4 + MathAddon.getRemainder(j, 4);
+                    let k = k + 1;
+                }
+                let j = j + 1;
+            }
+            let i = i + 1;
+        }
+        let result = Array.new(2);
+        let result[0] = list;
+        let result[1] = k - 1;
+        return result;
+    }
+
+    method void dispose () {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

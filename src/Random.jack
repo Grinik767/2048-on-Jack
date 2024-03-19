@@ -15,7 +15,18 @@ class Random {
         return randomNumber + min;
     }
 
-    method int nextStringRandom(String  str) {
-         return nextRandom(0, str.Length());
+    method Array getTwoRandomNumbers(int min, int max){
+        var int x1, x2;
+        var Array result;
+        let x1 = nextRandom(min, max);
+        let seed = MathAddon.getRemainder((seed * 7 + 13), 4265);
+        let x2 = nextRandom(min, max);
+        while (x1 = x2){
+            let x2 = nextRandom(min, max);
+        }
+        let result = Array.new(2);
+        let result[0] = x1;
+        let result[1] = x2;
+        return result;
     }
 }
