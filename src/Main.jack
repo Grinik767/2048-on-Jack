@@ -1,13 +1,15 @@
 class Main {
      function void main () {
-         var Array a, result, result1;
-         var Random rnd;
-         let rnd = Random.new(13);
-         let result = rnd.getTwoRandomNumbers(0, 15);
-         let result1 = rnd.getTwoRandomNumbers(0, 15);
-         do Output.printInt(result1[0]);
-         do Output.println();
-         do Output.printInt(result1[1]);
-         return; 
+         var Board gameBoard;
+         var Array a, b;
+         let gameBoard = Board.new();
+         let a = Array.new(4);
+         let a[0] = Tile.new(2);
+         let a[1] = Tile.new(2);
+         let a[2] = Tile.new(4);
+         let a[3] = Tile.new(0);
+         let b = gameBoard.CalculateLine(a);
+         do Display.printArray(b);
+         return;
      }
 }
