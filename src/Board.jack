@@ -20,10 +20,14 @@ class Board {
             while (j < 4){
                 let xi = board[i];
                 let x = i * 4 + MathAddon.getRemainder(j, 4);
-                if (x = rndNumbers[0] | x = rndNumbers[1]){
+                if (x = rndNumbers[0]){
                     let xi[j] = Tile.new(2);
                 } else {
-                    let xi[j] = Tile.new(0);
+                    if (x = rndNumbers[1]){
+                        let xi[j] = Tile.new(2);
+                    } else{
+                        let xi[j] = Tile.new(0);
+                    }
                 }
                 let j = j + 1; 
             }
