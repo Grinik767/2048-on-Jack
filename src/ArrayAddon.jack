@@ -1,0 +1,23 @@
+class ArrayAddon {
+    function Array getNoZeroElements(Array arr) {
+        var Array result, returnResult;
+        var Tile el;
+        var int i, k, counter;
+        let k = 0;
+        let i = 0;
+        let result = Array.new(4);
+        while (i < 4){
+            let el = arr[i];
+            if (~(el.getValue() = 0)){
+                let result[k] = el;
+                let k = k + 1;
+            }
+            let i = i + 1;
+        }
+        
+        let returnResult = Array.new(2);
+        let returnResult[0] = result;
+        let returnResult[1] = k;
+        return returnResult;
+    }
+}
