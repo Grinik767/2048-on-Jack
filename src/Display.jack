@@ -22,17 +22,16 @@ class Display {
         return;
     }
 
-    function void printArray (Array array) {
+    function void printArray (Array array, int length) {
         var int i;
         var Tile element;
-        do Screen.clearScreen();
-        do Output.moveCursor(0, 0);
-        while (i < 4) { 
+        while (i < length) { 
             let element = array[i];
             do Output.printInt(element.getValue());
             do Output.printString(" ");
             let i = i + 1;
         }
+        do Output.println();
         return;
     }
 }

@@ -9,7 +9,7 @@ class ArrayAddon {
         while (i < 4){
             let el = arr[i];
             if (~(el.getValue() = 0)){
-                let result[k] = el;
+                let result[k] = Tile.new(el.getValue());
                 let k = k + 1;
             }
             let i = i + 1;
