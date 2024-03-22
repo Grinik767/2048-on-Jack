@@ -20,4 +20,42 @@ class ArrayAddon {
         let returnResult[1] = k;
         return returnResult;
     }
+
+    function Array ReverseArray (Array arr) {
+        var int i;
+        var Array newArray;
+        let newArray = Array.new(4);
+        let i = 0;
+        while(i < 4) {
+            let newArray[i] = arr[3-i];
+            let i = i + 1;
+        }
+        
+        return newArray;
+    }
+
+    function void TransposeMatrix(Array arr) {
+        var int i, j;
+        var int element;
+        var Array transposeMatrix, arri, arrj;
+        let transposeMatrix = Array.new(4);
+        let i = 0;
+        let j = 0;
+        while (i < 4) {
+            while(j < 4) {
+                if (j < i) {
+                    let arri = arr[i];
+                    let arrj = arr[j];
+                    let element = arri[j];
+                    let arri[j] = arrj[i];
+                    let arrj[i] = element;
+                }
+                let j = j + 1;
+            }
+            let j = 0;
+            let i = i + 1;
+        }
+        return;
+    }
+ 
 }
