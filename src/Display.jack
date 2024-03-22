@@ -1,9 +1,10 @@
 class Display {
     function void updateScreen(Board board) {
-        var int i, j;
+        var int i, j, score;
         var Tile element;
         var Array xi, display;
         let display = board.getValues();
+        let score = board.GetScore();
         let i = 0;
         do Screen.clearScreen();
         do Output.moveCursor(0, 0);
@@ -19,7 +20,10 @@ class Display {
             }
             let i = i + 1;
         }
-        //do Output.println();
+        do Output.println();
+        do Output.println();
+        do Output.printString("Score:");
+        do Output.printInt(score);
         return;
     }
 

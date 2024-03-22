@@ -1,9 +1,14 @@
 class Board {
     field Array board;
     field Random rnd;
+    field int score;
 
     method Array getValues () {
         return board;
+    }
+
+    method int GetScore() {
+        return score;
     }
 
     constructor Board new(){
@@ -13,6 +18,7 @@ class Board {
         let rnd = Random.new(13);
         let rndNumbers = rnd.getTwoRandomNumbers(0, 15);
         let board = Array.new(4);
+        let score = 0;
         let i = 0;
         while (i < 4){
             let board[i] = Array.new(4);
@@ -88,6 +94,7 @@ class Board {
                 let xN = tN.getValue();
                 if (xC = xN){
                     let resultWithAdd[cur] = tN.Add(tC);
+                    let score = score + xC + xN;
                     let i = i + 1;
                     let kZero = kZero + 1; 
                 } else {
@@ -170,7 +177,7 @@ class Board {
         if (isUp = true){
             let wereFreePlaces = MakeStepHorizontal(true);
         }
-        if (isUp = false) {
+        else {
             let wereFreePlaces = MakeStepHorizontal(false);
         }
         do ArrayAddon.TransposeMatrix(board);
