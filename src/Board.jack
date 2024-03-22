@@ -39,6 +39,7 @@ class Board {
             }
             let i = i + 1;
         }
+        do rndNumbers.dispose();
         return this;
     }
 
@@ -106,7 +107,8 @@ class Board {
             let cur = cur + 1;
             let i = i + 1;
         }
-        do result.dispose();
+
+        do ArrayAddon.disposeArray(result, kNotZero);
 
         let i = 0;
         while (i < 4){
@@ -123,16 +125,16 @@ class Board {
             let i = i + 1;
         }
 
-        do resultWithAdd.dispose();
+        do ArrayAddon.disposeArray(resultWithAdd, cur);
         do resultNoZero.dispose();
-    
+        
         return;
     }
 
     method bool MakeStepHorizontal(bool isTurnLeft) {
         var int i, kFreePlaces, rndPlace;
-        var Tile newTile;
-        var Array places_, freePlacesIndxs, line, el;
+        var Tile newTile, el;
+        var Array places_, freePlacesIndxs, line;
         
         let i = 0;
         while (i < 4){
@@ -154,6 +156,8 @@ class Board {
         let kFreePlaces = places_[1];
 
         if (kFreePlaces = 0){
+            do freePlacesIndxs.dispose();
+            do places_.dispose();
             return false;
         }
         
@@ -168,8 +172,8 @@ class Board {
         do el.dispose();
         let line[MathAddon.getRemainder(rndPlace, 4)] = newTile;
 
-        do places_.dispose();
         do freePlacesIndxs.dispose();
+        do places_.dispose();
         
         return true;
     }

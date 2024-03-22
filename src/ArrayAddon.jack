@@ -53,5 +53,18 @@ class ArrayAddon {
         }
         return;
     }
+
+    function void disposeArray (Array arr, int length) {
+        var int i;
+        var Tile el;
+        let i = 0;
+        while (i < length){
+            let el = arr[i];
+            do el.dispose();
+            let i = i + 1;
+        }
+        do arr.dispose();
+        return;
+    }
  
 }

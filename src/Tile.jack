@@ -11,11 +11,7 @@ class Tile {
     }
 
     method Tile Add (Tile other) {
-        var int x;
-        let x = other.getValue() + value;
-        do other.dispose();
-        do dispose();
-        return Tile.new(x);
+        return Tile.new(other.getValue() + value);
     }
 
     method void dispose () {
