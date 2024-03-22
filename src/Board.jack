@@ -167,6 +167,9 @@ class Board {
         let el = line[MathAddon.getRemainder(rndPlace, 4)];
         do el.dispose();
         let line[MathAddon.getRemainder(rndPlace, 4)] = newTile;
+
+        do places_.dispose();
+        do freePlacesIndxs.dispose();
         
         return true;
     }
