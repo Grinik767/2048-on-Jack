@@ -1,5 +1,6 @@
 class Board {
     field Array board;
+    field Random rnd;
 
     method Array getValues () {
         return board;
@@ -9,7 +10,6 @@ class Board {
         // иницилизируем игровое поле
         var int i, j, x;
         var Array xi, rndNumbers;
-        var Random rnd;
         let rnd = Random.new(13);
         let rndNumbers = rnd.getTwoRandomNumbers(0, 15);
         let board = Array.new(4);
@@ -63,11 +63,11 @@ class Board {
         }
         let result = Array.new(2);
         let result[0] = list;
-        let result[1] = k - 1;
+        let result[1] = k;
         return result;
     }
 
-    method Array CalculateLine(Array line){
+    method void CalculateLineTurnRight(Array line){
         var int i, xC, xN, kZero, kNotZero, cur;
         var Tile tC, tN;
         var Array resultNoZero, result, resultWithAdd;
@@ -119,7 +119,49 @@ class Board {
         do resultWithAdd.dispose();
         do resultNoZero.dispose();
     
-        return line;
+        return;
+    }
+
+    method bool MakeStepHorizontal(bool isTurnLeft) {
+        var int i, kFreePlaces, rndPlace;
+        var Tile newTile;
+        var Array places_, freePlacesIndxs, line, el;
+        
+        let i = 0;
+        while (i < 4){
+            if (isTurnLeft = true){
+                do ArrayAddon.reverseArray(board[i]);
+            }
+            do CalculateLineTurnRight(board[i]);
+            let i = i + 1;
+        }
+
+        let i = 0;
+        while ((i < 4) & isTurnLeft){
+            do ArrayAddon.reverseArray(board[i]);
+            let i = i + 1;
+        }
+
+        let places_ = getFreePlaces();
+        let freePlacesIndxs = places_[0];
+        let kFreePlaces = places_[1];
+
+        if (kFreePlaces = 0){
+            return false;
+        }
+        
+        let rndPlace = freePlacesIndxs[rnd.nextRandom(0, kFreePlaces - 1)];
+        if (rnd.nextRandom(0, 100) < 90){
+            let newTile = Tile.new(2);
+        } else {
+            let newTile = Tile.new(4);
+        }
+        let line = board[rndPlace / 4];
+        let el = line[MathAddon.getRemainder(rndPlace, 4)];
+        do el.dispose();
+        let line[MathAddon.getRemainder(rndPlace, 4)] = newTile;
+        
+        return true;
     }
 
 

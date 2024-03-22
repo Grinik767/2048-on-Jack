@@ -21,20 +21,18 @@ class ArrayAddon {
         return returnResult;
     }
 
-    function Array ReverseArray (Array arr) {
-        var int i;
-        var Array newArray;
-        let newArray = Array.new(4);
-        let i = 0;
-        while(i < 4) {
-            let newArray[i] = arr[3-i];
-            let i = i + 1;
-        }
-        
-        return newArray;
+    function void reverseArray (Array arr) {
+        var Tile el2, el3;
+        let el2 = arr[2];
+        let el3 = arr[3];
+        let arr[3] = arr[0];
+        let arr[2] = arr[1];
+        let arr[1] = el2;
+        let arr[0] = el3;
+        return;
     }
 
-    function void TransposeMatrix(Array arr) {
+    function void transposeMatrix(Array arr) {
         var int i, j;
         var int element;
         var Array transposeMatrix, arri, arrj;

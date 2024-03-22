@@ -1,0 +1,36 @@
+class Game {
+    field Board board;
+    
+    constructor Game new(){
+        let board = Board.new();
+        return this;
+    }
+    
+    method void run () {
+        var char key;
+        var bool status;
+
+        let status = true;
+        do Display.updateScreen(board);
+        while (status){
+            while (key = 0){
+                let key = Keyboard.keyPressed();
+            }
+
+            if (key = 130){
+                let status = board.MakeStepHorizontal(true);
+                do Display.updateScreen(board);
+                do Sys.wait(500);
+            }
+            if (key = 132){
+                let status = board.MakeStepHorizontal(false);
+                do Display.updateScreen(board);
+                do Sys.wait(500);
+            }
+            
+            let key = Keyboard.keyPressed();
+        }
+
+        return;
+    }
+}
