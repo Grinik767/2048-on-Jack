@@ -164,6 +164,23 @@ class Board {
         return true;
     }
 
+    method bool MakeStepVertical(bool isUp) {
+        var bool wereFreePlaces;
+        do ArrayAddon.TransposeMatrix(board);
+        if (isUp = true){
+            let wereFreePlaces = MakeStepHorizontal(true);
+        }
+        if (isUp = false) {
+            let wereFreePlaces = MakeStepHorizontal(false);
+        }
+        do ArrayAddon.TransposeMatrix(board);
+        if (wereFreePlaces = false) {
+            return false;
+        }
+        return true;
+
+    }
+
 
     method void dispose () {
         do board.dispose();

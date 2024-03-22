@@ -32,14 +32,13 @@ class ArrayAddon {
         return;
     }
 
-    function void transposeMatrix(Array arr) {
+    function void TransposeMatrix(Array arr) {
         var int i, j;
         var int element;
-        var Array transposeMatrix, arri, arrj;
-        let transposeMatrix = Array.new(4);
+        var Array arri, arrj;
         let i = 0;
-        let j = 0;
         while (i < 4) {
+            let j = 0;
             while(j < 4) {
                 if (j < i) {
                     let arri = arr[i];
@@ -50,7 +49,6 @@ class ArrayAddon {
                 }
                 let j = j + 1;
             }
-            let j = 0;
             let i = i + 1;
         }
         return;

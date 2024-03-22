@@ -27,6 +27,16 @@ class Game {
                 do Display.updateScreen(board);
                 do Sys.wait(500);
             }
+            if (key = 133){
+                let status = board.MakeStepVertical(false);
+                do Display.updateScreen(board);
+                do Sys.wait(500);
+            }
+            if (key = 131){
+                let status = board.MakeStepVertical(true);
+                do Display.updateScreen(board);
+                do Sys.wait(500);
+            }
             
             let key = Keyboard.keyPressed();
         }
