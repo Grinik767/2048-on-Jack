@@ -1,6 +1,6 @@
 class Tile {
     field int value;
-
+    
     method int getValue () {
         return value;
     }
@@ -14,24 +14,37 @@ class Tile {
         return Tile.new(other.getValue() + value);
     }
 
-    method void DrawTile (int value) {
+    method void DrawTile () {
         var String s;
-
         if (value < 10) {
             do Output.printInt(value);
-            let s = "  |   ";
+            let s = "   |  ";
             do Output.printString(s);
             do s.dispose();
         }
         if (value > 10) {
-            do Output.printInt(value);
-            let s = " |   ";
-            do Output.printString(s);
-            do s.dispose();
+            if (value < 100) {
+                do Output.printInt(value);
+                let s = "  |  ";
+                do Output.printString(s);
+                do s.dispose();
+            }
+            else {
+                if (value < 1000) {
+                    do Output.printInt(value);
+                    let s = " |  ";
+                    do Output.printString(s);
+                    do s.dispose();
+                }
+                else {
+                    do Output.printInt(value);
+                    let s = "|  ";
+                    do Output.printString(s);
+                    do s.dispose();
+                }
+            }
         }
-        
-        //do Output.printInt(value);
-        //do Output.printString("  |   ");
+       
         return;
     }
     

@@ -40,7 +40,8 @@ class Game {
             
             let key = Keyboard.keyPressed();
         }
-
+        
+        do Display.PrintResult();
         return;
     }
 }

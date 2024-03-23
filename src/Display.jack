@@ -14,6 +14,11 @@ class Display {
         do Screen.clearScreen();
         do Output.moveCursor(0, 0);
         
+        let s = "          Game 2048";
+        do Output.printString(s);
+        do s.dispose();
+        do Output.println();
+        
         do Display.DrawLine(lineCounter);      //отрисовка верхней горизонтальной линии
         let lineCounter = lineCounter + 1;
         while (i < 4) {     //отрисовка рядов
@@ -21,13 +26,13 @@ class Display {
             let j = 0;
             let xi = display[i];
             
-            let s = "|   ";
+            let s = "|  ";
             do Output.printString(s);
             do s.dispose();
             
             while (j < 4) {         //отрисовка чисел в ряду
                 let element = xi[j];
-                do element.DrawTile(element.getValue());
+                do element.DrawTile();
                 let j = j + 1;
             }
             let i = i + 1;
@@ -38,15 +43,14 @@ class Display {
         }
         do Output.println();
         do Output.println();
-        let s = "Score:";
+        let s = "Score: ";
         do Output.printString(s);
         do s.dispose();
         do Output.printInt(score);
         return;
     }
 
-    
-    
+
     function void DrawLine (int lineCounter) {
         var int horizontalCounter;
         var String s;
@@ -80,7 +84,6 @@ class Display {
     }
     
     
-    
     function void printArray (Array array, int length) {
         var int i;
         var Tile element;
@@ -95,6 +98,16 @@ class Display {
         }
         do s.dispose();
         do Output.println();
+        return;
+    }
+    
+    function void PrintResult () {
+        var String s;
+        let s = "So good!";
+        do Output.println();
+        do Output.printString(s);
+        do s.dispose();
+        
         return;
     }
 }
