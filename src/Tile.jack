@@ -17,7 +17,13 @@ class Tile {
     method void DrawTile () {
         var String s;
         if (value < 10) {
-            do Output.printInt(value);
+            if (value = 0){
+                let s = " ";
+                do Output.printString(s);
+                do s.dispose();
+            } else {
+                do Output.printInt(value);
+            }
             let s = "   |  ";
             do Output.printString(s);
             do s.dispose();
