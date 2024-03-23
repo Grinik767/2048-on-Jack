@@ -1,0 +1,109 @@
+function Game.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+call Board.new 0
+pop this 0
+push pointer 0
+return
+function Game.run 2
+push argument 0
+pop pointer 0
+push constant 0
+not
+pop local 1
+push this 0
+call Display.updateScreen 1
+pop temp 0
+label WHILE_EXP0
+push local 1
+not
+if-goto WHILE_END0
+label WHILE_EXP1
+push local 0
+push constant 0
+eq
+not
+if-goto WHILE_END1
+call Keyboard.keyPressed 0
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 130
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push this 0
+push constant 0
+not
+call Board.MakeStepHorizontal 2
+pop local 1
+push this 0
+call Display.updateScreen 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+label IF_FALSE0
+push local 0
+push constant 132
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push this 0
+push constant 0
+call Board.MakeStepHorizontal 2
+pop local 1
+push this 0
+call Display.updateScreen 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+label IF_FALSE1
+push local 0
+push constant 133
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+push constant 0
+call Board.MakeStepVertical 2
+pop local 1
+push this 0
+call Display.updateScreen 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+label IF_FALSE2
+push local 0
+push constant 131
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push this 0
+push constant 0
+not
+call Board.MakeStepVertical 2
+pop local 1
+push this 0
+call Display.updateScreen 1
+pop temp 0
+push constant 500
+call Sys.wait 1
+pop temp 0
+label IF_FALSE3
+call Keyboard.keyPressed 0
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+call Display.PrintResult 0
+pop temp 0
+push constant 0
+return

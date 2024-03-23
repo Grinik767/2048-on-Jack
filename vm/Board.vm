@@ -1,0 +1,648 @@
+function Board.getValues 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Board.GetScore 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Board.new 5
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push constant 13
+call Random.new 1
+pop this 1
+push this 1
+push constant 0
+push constant 15
+call Random.getTwoRandomNumbers 3
+pop local 4
+push constant 4
+call Array.new 1
+pop this 0
+push constant 0
+pop this 2
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 0
+add
+push constant 4
+call Array.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+pop local 1
+label WHILE_EXP1
+push local 1
+push constant 4
+lt
+not
+if-goto WHILE_END1
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 3
+push local 0
+push constant 4
+call Math.multiply 2
+push local 1
+push constant 4
+call MathAddon.getRemainder 2
+add
+pop local 2
+push local 2
+push constant 0
+push local 4
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push local 3
+add
+push constant 2
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto IF_END0
+label IF_FALSE0
+push local 2
+push constant 1
+push local 4
+add
+pop pointer 1
+push that 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 1
+push local 3
+add
+push constant 2
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto IF_END1
+label IF_FALSE1
+push local 1
+push local 3
+add
+push constant 0
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_END1
+label IF_END0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 4
+call Array.dispose 1
+pop temp 0
+push pointer 0
+return
+function Board.getFreePlaces 7
+push argument 0
+pop pointer 0
+push constant 16
+call Array.new 1
+pop local 0
+push constant 0
+pop local 3
+push constant 0
+pop local 5
+label WHILE_EXP0
+push local 3
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 4
+label WHILE_EXP1
+push local 4
+push constant 4
+lt
+not
+if-goto WHILE_END1
+push local 3
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 4
+push local 2
+add
+pop pointer 1
+push that 0
+pop local 6
+push local 6
+call Tile.getValue 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 5
+push local 0
+add
+push local 3
+push constant 4
+call Math.multiply 2
+push local 4
+push constant 4
+call MathAddon.getRemainder 2
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 5
+push constant 1
+add
+pop local 5
+label IF_FALSE0
+push local 4
+push constant 1
+add
+pop local 4
+goto WHILE_EXP1
+label WHILE_END1
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push constant 2
+call Array.new 1
+pop local 1
+push constant 0
+push local 1
+add
+push local 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push local 1
+add
+push local 5
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 1
+return
+function Board.CalculateLineTurnRight 11
+push argument 0
+pop pointer 0
+push argument 1
+call ArrayAddon.getNoZeroElements 1
+pop local 8
+push constant 0
+push local 8
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 1
+push local 8
+add
+pop pointer 1
+push that 0
+pop local 4
+push constant 4
+push local 4
+sub
+pop local 3
+push constant 0
+pop local 0
+push constant 4
+call Array.new 1
+pop local 10
+push constant 0
+pop local 5
+label WHILE_EXP0
+push local 0
+push local 4
+lt
+not
+if-goto WHILE_END0
+push local 0
+push local 9
+add
+pop pointer 1
+push that 0
+pop local 6
+push local 6
+call Tile.getValue 1
+pop local 1
+push local 0
+push constant 1
+add
+push local 4
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push constant 1
+add
+push local 9
+add
+pop pointer 1
+push that 0
+pop local 7
+push local 7
+call Tile.getValue 1
+pop local 2
+push local 1
+push local 2
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 5
+push local 10
+add
+push local 7
+push local 6
+call Tile.Add 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push this 2
+push local 1
+add
+push local 2
+add
+pop this 2
+push local 0
+push constant 1
+add
+pop local 0
+push local 3
+push constant 1
+add
+pop local 3
+goto IF_END1
+label IF_FALSE1
+push local 5
+push local 10
+add
+push local 1
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_END1
+goto IF_END0
+label IF_FALSE0
+push local 5
+push local 10
+add
+push local 1
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_END0
+push local 5
+push constant 1
+add
+pop local 5
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 9
+push local 4
+call ArrayAddon.disposeArray 2
+pop temp 0
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END1
+push local 0
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 6
+push local 6
+call Tile.dispose 1
+pop temp 0
+push local 0
+push local 3
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push argument 1
+add
+push constant 0
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto IF_END2
+label IF_FALSE2
+push local 0
+push local 3
+sub
+push local 10
+add
+pop pointer 1
+push that 0
+pop local 6
+push local 0
+push argument 1
+add
+push local 6
+call Tile.getValue 1
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+label IF_END2
+push local 0
+push argument 1
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push local 10
+push local 5
+call ArrayAddon.disposeArray 2
+pop temp 0
+push local 8
+call Array.dispose 1
+pop temp 0
+push constant 0
+return
+function Board.MakeStepHorizontal 8
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 4
+lt
+not
+if-goto WHILE_END0
+push argument 1
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+call ArrayAddon.reverseArray 1
+pop temp 0
+label IF_FALSE0
+push pointer 0
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+call Board.CalculateLineTurnRight 2
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+pop local 0
+label WHILE_EXP1
+push local 0
+push constant 4
+lt
+push argument 1
+and
+not
+if-goto WHILE_END1
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+call ArrayAddon.reverseArray 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP1
+label WHILE_END1
+push pointer 0
+call Board.getFreePlaces 1
+pop local 5
+push constant 0
+push local 5
+add
+pop pointer 1
+push that 0
+pop local 6
+push constant 1
+push local 5
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 6
+call Array.dispose 1
+pop temp 0
+push local 5
+call Array.dispose 1
+pop temp 0
+push constant 0
+return
+label IF_FALSE1
+push this 1
+push constant 0
+push local 1
+push constant 1
+sub
+call Random.nextRandom 3
+push local 6
+add
+pop pointer 1
+push that 0
+pop local 2
+push this 1
+push constant 0
+push constant 100
+call Random.nextRandom 3
+push constant 90
+lt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 2
+call Tile.new 1
+pop local 3
+goto IF_END2
+label IF_FALSE2
+push constant 4
+call Tile.new 1
+pop local 3
+label IF_END2
+push local 2
+push constant 4
+call Math.divide 2
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 7
+push local 2
+push constant 4
+call MathAddon.getRemainder 2
+push local 7
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 4
+call Tile.dispose 1
+pop temp 0
+push local 2
+push constant 4
+call MathAddon.getRemainder 2
+push local 7
+add
+push local 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 6
+call Array.dispose 1
+pop temp 0
+push local 5
+call Array.dispose 1
+pop temp 0
+push constant 0
+not
+return
+function Board.MakeStepVertical 1
+push argument 0
+pop pointer 0
+push this 0
+call ArrayAddon.TransposeMatrix 1
+pop temp 0
+push argument 1
+push constant 0
+not
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push pointer 0
+push constant 0
+not
+call Board.MakeStepHorizontal 2
+pop local 0
+goto IF_END0
+label IF_FALSE0
+push pointer 0
+push constant 0
+call Board.MakeStepHorizontal 2
+pop local 0
+label IF_END0
+push this 0
+call ArrayAddon.TransposeMatrix 1
+pop temp 0
+push local 0
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push constant 0
+not
+return
+function Board.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Array.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
