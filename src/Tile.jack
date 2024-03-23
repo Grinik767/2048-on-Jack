@@ -15,13 +15,19 @@ class Tile {
     }
 
     method void DrawTile (int value) {
+        var String s;
+
         if (value < 10) {
             do Output.printInt(value);
-            do Output.printString("  |   ");
+            let s = "  |   ";
+            do Output.printString(s);
+            do s.dispose();
         }
         if (value > 10) {
             do Output.printInt(value);
-            do Output.printString(" |   ");
+            let s = " |   ";
+            do Output.printString(s);
+            do s.dispose();
         }
         
         //do Output.printInt(value);

@@ -5,6 +5,8 @@ class Display {
         var int lineCounter;
         var Tile element;
         var Array xi, display;
+        var String s;
+
         let display = board.getValues();
         let score = board.GetScore();
         let i = 0;
@@ -19,7 +21,9 @@ class Display {
             let j = 0;
             let xi = display[i];
             
-            do Output.printString("|   ");
+            let s = "|   ";
+            do Output.printString(s);
+            do s.dispose();
             
             while (j < 4) {         //отрисовка чисел в ряду
                 let element = xi[j];
@@ -34,7 +38,9 @@ class Display {
         }
         do Output.println();
         do Output.println();
-        do Output.printString("Score:");
+        let s = "Score:";
+        do Output.printString(s);
+        do s.dispose();
         do Output.printInt(score);
         return;
     }
@@ -43,21 +49,29 @@ class Display {
     
     function void DrawLine (int lineCounter) {
         var int horizontalCounter;
+        var String s;
+
         let horizontalCounter = 0;
         if (lineCounter > 0){
-            do Output.printString("|      |      |      |      |");
+            let s = "|      |      |      |      |";
+            do Output.printString(s);
+            do s.dispose();
             do Output.println();
         }
         else {
             do Output.println();
         }
+        let s = "-";
         while (horizontalCounter < 29) {        //отрисовка горизонтальной линии
-            do Output.printString("-");
+            do Output.printString(s);
             let horizontalCounter = horizontalCounter + 1;
         }
+        do s.dispose();
         if (lineCounter < 4) {
             do Output.println();
-            do Output.printString("|      |      |      |      |");
+            let s = "|      |      |      |      |";
+            do Output.printString(s);
+            do s.dispose();
         }
         else {
             do Output.println();
@@ -70,12 +84,16 @@ class Display {
     function void printArray (Array array, int length) {
         var int i;
         var Tile element;
+        var String s;
+
+        let s = " ";
         while (i < length) { 
             let element = array[i];
             do Output.printInt(element.getValue());
-            do Output.printString(" ");
+            do Output.printString(s);
             let i = i + 1;
         }
+        do s.dispose();
         do Output.println();
         return;
     }
