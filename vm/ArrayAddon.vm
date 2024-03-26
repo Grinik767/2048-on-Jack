@@ -228,3 +228,38 @@ call Array.dispose 1
 pop temp 0
 push constant 0
 return
+function ArrayAddon.remakeToZeroArray 2
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push argument 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+call Tile.dispose 1
+pop temp 0
+push local 0
+push argument 0
+add
+push constant 0
+call Tile.new 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

@@ -229,54 +229,52 @@ push temp 0
 pop that 0
 push local 1
 return
-function Board.CalculateLineTurnRight 11
+function Board.CalculateLineTurnRight 9
 push argument 0
 pop pointer 0
 push argument 1
 call ArrayAddon.getNoZeroElements 1
-pop local 8
+pop local 7
 push constant 0
-push local 8
+push local 7
 add
 pop pointer 1
 push that 0
-pop local 9
+pop local 8
 push constant 1
-push local 8
+push local 7
 add
 pop pointer 1
 push that 0
 pop local 4
-push constant 4
 push local 4
+push constant 1
 sub
-pop local 3
-push constant 0
 pop local 0
+push argument 1
 push constant 4
-call Array.new 1
-pop local 10
-push constant 0
-pop local 5
+call ArrayAddon.remakeToZeroArray 2
+pop temp 0
+push constant 3
+pop local 3
 label WHILE_EXP0
 push local 0
-push local 4
-lt
+push constant 1
+neg
+gt
 not
 if-goto WHILE_END0
 push local 0
-push local 9
+push local 8
 add
 pop pointer 1
 push that 0
-pop local 6
-push local 6
+pop local 5
+push local 5
 call Tile.getValue 1
 pop local 1
 push local 0
-push constant 1
-add
-push local 4
+push constant 0
 eq
 not
 if-goto IF_TRUE0
@@ -284,13 +282,13 @@ goto IF_FALSE0
 label IF_TRUE0
 push local 0
 push constant 1
-add
-push local 9
+sub
+push local 8
 add
 pop pointer 1
 push that 0
-pop local 7
-push local 7
+pop local 6
+push local 6
 call Tile.getValue 1
 pop local 2
 push local 1
@@ -299,11 +297,11 @@ eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-push local 5
-push local 10
+push local 3
+push argument 1
 add
-push local 7
 push local 6
+push local 5
 call Tile.Add 2
 pop temp 0
 pop pointer 1
@@ -317,16 +315,12 @@ add
 pop this 2
 push local 0
 push constant 1
-add
+sub
 pop local 0
-push local 3
-push constant 1
-add
-pop local 3
 goto IF_END1
 label IF_FALSE1
-push local 5
-push local 10
+push local 3
+push argument 1
 add
 push local 1
 call Tile.new 1
@@ -337,8 +331,8 @@ pop that 0
 label IF_END1
 goto IF_END0
 label IF_FALSE0
-push local 5
-push local 10
+push local 3
+push argument 1
 add
 push local 1
 call Tile.new 1
@@ -347,90 +341,21 @@ pop pointer 1
 push temp 0
 pop that 0
 label IF_END0
-push local 5
+push local 3
 push constant 1
-add
-pop local 5
+sub
+pop local 3
 push local 0
 push constant 1
-add
+sub
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
-push local 9
+push local 8
 push local 4
 call ArrayAddon.disposeArray 2
 pop temp 0
-push constant 0
-pop local 0
-label WHILE_EXP1
-push local 0
-push constant 4
-lt
-not
-if-goto WHILE_END1
-push local 0
-push argument 1
-add
-pop pointer 1
-push that 0
-pop local 6
-push local 6
-call Tile.dispose 1
-pop temp 0
-push local 0
-push local 3
-lt
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
-push local 0
-push argument 1
-add
-push constant 0
-call Tile.new 1
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-goto IF_END2
-label IF_FALSE2
-push local 0
-push local 3
-sub
-push local 10
-add
-pop pointer 1
-push that 0
-pop local 6
-push local 0
-push argument 1
-add
-push local 6
-call Tile.getValue 1
-call Tile.new 1
-pop temp 0
-pop pointer 1
-push temp 0
-pop that 0
-label IF_END2
-push local 0
-push argument 1
-add
-pop pointer 1
-push that 0
-pop local 2
-push local 0
-push constant 1
-add
-pop local 0
-goto WHILE_EXP1
-label WHILE_END1
-push local 10
-push local 5
-call ArrayAddon.disposeArray 2
-pop temp 0
-push local 8
+push local 7
 call Array.dispose 1
 pop temp 0
 push constant 0
