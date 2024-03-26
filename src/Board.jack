@@ -161,14 +161,14 @@ class Board {
 
     method bool MakeStepVertical(bool isUp) {
         var bool wereFreePlaces;
-        do ArrayAddon.TransposeMatrix(board);
+        do ArrayAddon.transposeMatrix(board);
         if (isUp = true){
             let wereFreePlaces = MakeStepHorizontal(true);
         }
         else {
             let wereFreePlaces = MakeStepHorizontal(false);
         }
-        do ArrayAddon.TransposeMatrix(board);
+        do ArrayAddon.transposeMatrix(board);
         if (wereFreePlaces = false) {
             return false;
         }

@@ -524,7 +524,7 @@ function Board.MakeStepVertical 1
 push argument 0
 pop pointer 0
 push this 0
-call ArrayAddon.TransposeMatrix 1
+call ArrayAddon.transposeMatrix 1
 pop temp 0
 push argument 1
 push constant 0
@@ -546,7 +546,7 @@ call Board.MakeStepHorizontal 2
 pop local 0
 label IF_END0
 push this 0
-call ArrayAddon.TransposeMatrix 1
+call ArrayAddon.transposeMatrix 1
 pop temp 0
 push local 0
 push constant 0

@@ -1,8 +1,6 @@
 class Display {
     function void updateScreen(Board board) {
-        var int i, j, score;
-        
-        var int lineCounter;
+        var int i, j, score, lineCounter;
         var Tile element;
         var Array xi, display;
         var String s;
