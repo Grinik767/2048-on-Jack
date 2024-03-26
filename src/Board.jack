@@ -75,57 +75,38 @@ class Board {
     }
 
     method void CalculateLineTurnRight(Array line){
-        var int i, xC, xN, kZero, kNotZero, cur;
+        var int i, xC, xN, cur, kNotZero;
         var Tile tC, tN;
-        var Array resultNoZero, result, resultWithAdd;
+        var Array resultNoZero, result;
 
         let resultNoZero = ArrayAddon.getNoZeroElements(line);
         let result = resultNoZero[0];
         let kNotZero = resultNoZero[1];
-        let kZero = 4 - kNotZero;
 
-        let i = 0;
-        let resultWithAdd = Array.new(4);
-        let cur = 0;
-        while (i < kNotZero){
+        let i = kNotZero - 1;
+        do ArrayAddon.remakeToZeroArray(line, 4);
+        let cur = 3;
+        while (i > -1){
             let tC = result[i];
             let xC = tC.getValue();
-            if (~(i + 1 = kNotZero)){
-                let tN = result[i + 1];
+            if (~(i = 0)){
+                let tN = result[i - 1];
                 let xN = tN.getValue();
                 if (xC = xN){
-                    let resultWithAdd[cur] = tN.Add(tC);
+                    let line[cur] = tN.Add(tC);
                     let score = score + xC + xN;
-                    let i = i + 1;
-                    let kZero = kZero + 1; 
+                    let i = i - 1;
                 } else {
-                    let resultWithAdd[cur] = Tile.new(xC);
+                    let line[cur] = Tile.new(xC);
                 }
             } else {
-                let resultWithAdd[cur] = Tile.new(xC);
+                let line[cur] = Tile.new(xC);
             }
-            let cur = cur + 1;
-            let i = i + 1;
+            let cur = cur - 1;
+            let i = i - 1;
         }
 
         do ArrayAddon.disposeArray(result, kNotZero);
-
-        let i = 0;
-        while (i < 4){
-            let tC = line[i];
-            do tC.dispose();
-            if (i < kZero){
-                let line[i] = Tile.new(0);
-            }
-            else {
-                let tC = resultWithAdd[i - kZero];
-                let line[i] = Tile.new(tC.getValue());
-            }
-            let xN = line[i];
-            let i = i + 1;
-        }
-
-        do ArrayAddon.disposeArray(resultWithAdd, cur);
         do resultNoZero.dispose();
         
         return;
