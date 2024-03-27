@@ -9,7 +9,9 @@ class Game {
     method void run () {
         var char key;
         var bool status;
-
+        var int delay;
+        
+        let delay = 100;
         let status = true;
         do Display.updateScreen(board);
         while (status){
@@ -20,22 +22,22 @@ class Game {
             if (key = 130){
                 let status = board.MakeStepHorizontal(true);
                 do Display.updateScreen(board);
-                do Sys.wait(500);
+                do Sys.wait(delay);
             }
             if (key = 132){
                 let status = board.MakeStepHorizontal(false);
                 do Display.updateScreen(board);
-                do Sys.wait(500);
+                do Sys.wait(delay);
             }
             if (key = 133){
                 let status = board.MakeStepVertical(false);
                 do Display.updateScreen(board);
-                do Sys.wait(500);
+                do Sys.wait(delay);
             }
             if (key = 131){
                 let status = board.MakeStepVertical(true);
                 do Display.updateScreen(board);
-                do Sys.wait(500);
+                do Sys.wait(delay);//в методе display
             }
             
             let key = Keyboard.keyPressed();

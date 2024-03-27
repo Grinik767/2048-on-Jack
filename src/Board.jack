@@ -25,7 +25,7 @@ class Board {
             let j = 0;
             while (j < 4){
                 let xi = board[i];
-                let x = i * 4 + MathAddon.getRemainder(j, 4);
+                let x = i * 4 + MathAddon.getRemainder(j, 4); 
                 if (x = rndNumbers[0]){
                     let xi[j] = Tile.new(2);
                 } else {
@@ -178,7 +178,15 @@ class Board {
 
 
     method void dispose () {
+        var int i;
+        let i = 0;
+        while(i < 4)
+        {
+            do board[i].dispose();
+            let i = i + 1;
+        }  
         do board.dispose();
+        do rnd.dispose;
         do Memory.deAlloc(this);
         return;
     }

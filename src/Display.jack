@@ -12,7 +12,8 @@ class Display {
         do Screen.clearScreen();
         do Output.moveCursor(0, 0);
         
-        let s = "          Game 2048";
+        do Output.moveCursor(0, 10);
+        let s = "Game 2048";
         do Output.printString(s);
         do s.dispose();
         do Output.println();
