@@ -30,16 +30,49 @@ pop local 0
 goto WHILE_EXP1
 label WHILE_END1
 push local 0
-push constant 130
-eq
+push constant 129
+gt
+push local 0
+push constant 134
+lt
+and
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
+push local 0
+push constant 130
+eq
+push local 0
+push constant 132
+eq
+or
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
 push this 0
-push constant 0
-not
+push local 0
+push constant 130
+eq
 call Board.MakeStepHorizontal 2
 pop local 1
+label IF_FALSE1
+push local 0
+push constant 131
+eq
+push local 0
+push constant 133
+eq
+or
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push this 0
+push local 0
+push constant 131
+eq
+call Board.MakeStepVertical 2
+pop local 1
+label IF_FALSE2
 push this 0
 call Display.updateScreen 1
 pop temp 0
@@ -47,58 +80,6 @@ push constant 500
 call Sys.wait 1
 pop temp 0
 label IF_FALSE0
-push local 0
-push constant 132
-eq
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push this 0
-push constant 0
-call Board.MakeStepHorizontal 2
-pop local 1
-push this 0
-call Display.updateScreen 1
-pop temp 0
-push constant 500
-call Sys.wait 1
-pop temp 0
-label IF_FALSE1
-push local 0
-push constant 133
-eq
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
-push this 0
-push constant 0
-call Board.MakeStepVertical 2
-pop local 1
-push this 0
-call Display.updateScreen 1
-pop temp 0
-push constant 500
-call Sys.wait 1
-pop temp 0
-label IF_FALSE2
-push local 0
-push constant 131
-eq
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
-push this 0
-push constant 0
-not
-call Board.MakeStepVertical 2
-pop local 1
-push this 0
-call Display.updateScreen 1
-pop temp 0
-push constant 500
-call Sys.wait 1
-pop temp 0
-label IF_FALSE3
 call Keyboard.keyPressed 0
 pop local 0
 goto WHILE_EXP0
