@@ -17,27 +17,18 @@ class Game {
                 let key = Keyboard.keyPressed();
             }
 
-            if (key = 130){
-                let status = board.MakeStepHorizontal(true);
+            if ((key > 129) & (key < 134)){
+                if ((key = 130) | (key = 132)){
+                    let status = board.MakeStepHorizontal(key = 130); // 130 - true - left
+                }                                                     // 132 - false - right
+                if ((key = 131) | (key = 133)){
+                    let status = board.MakeStepVertical(key = 131);   // 131 - true - up
+                }                                                     // 133 - false - down
+
                 do Display.updateScreen(board);
                 do Sys.wait(500);
             }
-            if (key = 132){
-                let status = board.MakeStepHorizontal(false);
-                do Display.updateScreen(board);
-                do Sys.wait(500);
-            }
-            if (key = 133){
-                let status = board.MakeStepVertical(false);
-                do Display.updateScreen(board);
-                do Sys.wait(500);
-            }
-            if (key = 131){
-                let status = board.MakeStepVertical(true);
-                do Display.updateScreen(board);
-                do Sys.wait(500);
-            }
-            
+
             let key = Keyboard.keyPressed();
         }
         

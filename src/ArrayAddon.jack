@@ -21,6 +21,7 @@ class ArrayAddon {
         return returnResult;
     }
 
+    /**Reverse given array (works correctly only if array's length is 4) */
     function void reverseArray (Array arr) {
         var Tile el2, el3;
         let el2 = arr[2];
@@ -53,6 +54,7 @@ class ArrayAddon {
         return;
     }
 
+    /**Disposes array of Tiles*/
     function void disposeArray (Array arr, int length) {
         var int i;
         var Tile el;
