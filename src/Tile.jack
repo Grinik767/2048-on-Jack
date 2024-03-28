@@ -13,46 +13,6 @@ class Tile {
     method Tile Add (Tile other) {
         return Tile.new(other.getValue() + value);
     }
-
-    method void DrawTile () {
-        var String s;
-        if (value < 10) {
-            if (value = 0){
-                let s = " ";
-                do Output.printString(s);
-                do s.dispose();
-            } else {
-                do Output.printInt(value);
-            }
-            let s = "   |  ";
-            do Output.printString(s);
-            do s.dispose();
-        }
-        if (value > 10) {
-            if (value < 100) {
-                do Output.printInt(value);
-                let s = "  |  ";
-                do Output.printString(s);
-                do s.dispose();
-            }
-            else {
-                if (value < 1000) {
-                    do Output.printInt(value);
-                    let s = " |  ";
-                    do Output.printString(s);
-                    do s.dispose();
-                }
-                else {
-                    do Output.printInt(value);
-                    let s = "|  ";
-                    do Output.printString(s);
-                    do s.dispose();
-                }
-            }
-        }
-       
-        return;
-    }
     
     method void dispose () {
         do Memory.deAlloc(this);

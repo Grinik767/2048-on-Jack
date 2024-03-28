@@ -26,13 +26,19 @@ class Game {
                 }                                                     // 133 - false - down
 
                 do Display.updateScreen(board);
-                do Sys.wait(500);
+                do Sys.wait(300);
             }
 
             let key = Keyboard.keyPressed();
         }
         
-        do Display.PrintResult();
+        do Display.printResult();
+        return;
+    }
+
+    method void dispose () {
+        do board.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }

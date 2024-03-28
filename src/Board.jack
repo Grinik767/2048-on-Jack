@@ -7,13 +7,13 @@ class Board {
         return board;
     }
 
-    method int GetScore() {
+    method int getScore() {
         return score;
     }
 
     constructor Board new(){
         // иницилизируем игровое поле
-        var int i, j, x;
+        var int i, j, tileIndex;
         var Array xi, rndNumbers;
         let rnd = Random.new(13);
         let rndNumbers = rnd.getTwoRandomNumbers(0, 15);
@@ -25,15 +25,11 @@ class Board {
             let j = 0;
             while (j < 4){
                 let xi = board[i];
-                let x = i * 4 + MathAddon.getRemainder(j, 4);
-                if (x = rndNumbers[0]){
+                let tileIndex = i * 4 + MathAddon.getRemainder(j, 4);
+                if ((tileIndex = rndNumbers[0]) | (tileIndex = rndNumbers[1])){
                     let xi[j] = Tile.new(2);
                 } else {
-                    if (x = rndNumbers[1]){
-                        let xi[j] = Tile.new(2);
-                    } else{
-                        let xi[j] = Tile.new(0);
-                    }
+                    let xi[j] = Tile.new(0);
                 }
                 let j = j + 1; 
             }
@@ -178,7 +174,13 @@ class Board {
 
 
     method void dispose () {
+        var int i;
+        while (i < 4){
+            do ArrayAddon.disposeArray(board[i], 4);
+            let i = i + 1;
+        }
         do board.dispose();
+        do rnd.dispose();
         do Memory.deAlloc(this);
         return;
     }

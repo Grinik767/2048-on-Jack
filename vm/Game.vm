@@ -76,7 +76,7 @@ label IF_FALSE2
 push this 0
 call Display.updateScreen 1
 pop temp 0
-push constant 500
+push constant 300
 call Sys.wait 1
 pop temp 0
 label IF_FALSE0
@@ -84,7 +84,18 @@ call Keyboard.keyPressed 0
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
-call Display.PrintResult 0
+call Display.printResult 0
+pop temp 0
+push constant 0
+return
+function Game.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Board.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
 pop temp 0
 push constant 0
 return

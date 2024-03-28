@@ -6,7 +6,7 @@ class Display {
         var String s;
 
         let display = board.getValues();
-        let score = board.GetScore();
+        let score = board.getScore();
         let i = 0;
         let lineCounter = 0;
         do Screen.clearScreen();
@@ -30,7 +30,7 @@ class Display {
             
             while (j < 4) {         //отрисовка чисел в ряду
                 let element = xi[j];
-                do element.DrawTile();
+                do Display.drawTile(element);
                 let j = j + 1;
             }
             let i = i + 1;
@@ -80,32 +80,58 @@ class Display {
         }
         return;
     }
-    
-    
-    function void printArray (Array array, int length) {
-        var int i;
-        var Tile element;
-        var String s;
 
-        let s = " ";
-        while (i < length) { 
-            let element = array[i];
-            do Output.printInt(element.getValue());
-            do Output.printString(s);
-            let i = i + 1;
-        }
-        do s.dispose();
-        do Output.println();
-        return;
-    }
     
-    function void PrintResult () {
+    function void printResult () {
         var String s;
         let s = "So good!";
         do Output.println();
         do Output.printString(s);
         do s.dispose();
         
+        return;
+    }
+
+    function void drawTile (Tile tile) {
+        var String s;
+        var int value;
+
+        let value = tile.getValue();
+        if (value < 10) {
+            if (value = 0){
+                let s = " ";
+                do Output.printString(s);
+                do s.dispose();
+            } else {
+                do Output.printInt(value);
+            }
+            let s = "   |  ";
+            do Output.printString(s);
+            do s.dispose();
+        }
+        if (value > 10) {
+            if (value < 100) {
+                do Output.printInt(value);
+                let s = "  |  ";
+                do Output.printString(s);
+                do s.dispose();
+            }
+            else {
+                if (value < 1000) {
+                    do Output.printInt(value);
+                    let s = " |  ";
+                    do Output.printString(s);
+                    do s.dispose();
+                }
+                else {
+                    do Output.printInt(value);
+                    let s = "|  ";
+                    do Output.printString(s);
+                    do s.dispose();
+                }
+            }
+        }
+       
         return;
     }
 }
